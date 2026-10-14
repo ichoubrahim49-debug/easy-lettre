@@ -1,1 +1,162 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Lettre</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #20263a;
+    }
+    header {
+      background: #243b80;
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 8px; }
+    main {
+      max-width: 650px;
+      margin: 24px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px #17255412;
+    }
+    label {
+      display: block;
+      margin: 16px 0 7px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd2e0;
+      border-radius: 8px;
+      font: inherit;
+      background: white;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    .primary { background: #243b80; color: white; width: 100%; }
+    .secondary { background: #e8edff; color: #243b80; }
+    #result {
+      display: none;
+      margin-top: 22px;
+      padding: 16px;
+      background: #f9fafc;
+      border: 1px solid #dce2ef;
+      border-radius: 10px;
+    }
+    #letter { white-space: pre-wrap; line-height: 1.6; }
+    footer { text-align: center; padding: 20px; color: #667085; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✉️ Easy Lettre</h1>
+    <p>Vos lettres administratives, simplement.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Créer ma lettre</h2>
+      <p>Remplissez les informations pour préparer votre courrier.</p>
+
+      <label for="type">Type de lettre</label>
+      <select id="type">
+        <option value="administration">Demande administrative</option>
+        <option value="logement">Logement</option>
+        <option value="travail">Travail / emploi</option>
+        <option value="resiliation">Résiliation d'un contrat</option>
+        <option value="reclamation">Réclamation</option>
+        <option value="absence">Justification d'absence</option>
+      </select>
+
+      <label for="name">Votre nom</label>
+      <input id="name" placeholder="Prénom et nom">
+
+      <label for="recipient">Destinataire</label>
+      <input id="recipient" placeholder="Ex. : CAF, propriétaire, employeur">
+
+      <label for="subject">Objet de la lettre</label>
+      <input id="subject" placeholder="Expliquez brièvement votre demande">
+
+      <label for="details">Détails de votre demande</label>
+      <textarea id="details" placeholder="Expliquez votre situation en quelques phrases..."></textarea>
+
+      <button class="primary" onclick="createLetter()">Préparer ma lettre</button>
+
+      <div id="result">
+        <h3>Votre lettre</h3>
+        <div id="letter"></div>
+        <button class="secondary" onclick="copyLetter()">Copier la lettre</button>
+        <button class="secondary" onclick="window.print()">Imprimer / PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>Easy Lettre — Simple, pratique et accessible.</footer>
+
+  <script>
+    function createLetter() {
+      const name = document.getElementById('name').value.trim();
+      const recipient = document.getElementById('recipient').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const details = document.getElementById('details').value.trim();
+      const type = document.getElementById('type').value;
+
+      if (!name || !recipient || !subject || !details) {
+        alert('Veuillez remplir tous les champs.');
+        return;
+      }
+
+      let greeting = 'Madame, Monsieur,';
+      let ending = 'Je vous remercie par avance de l’attention portée à ma demande.\\n\\nCordialement,';
+
+      if (type === 'travail') {
+        greeting = 'Madame, Monsieur,';
+      }
+
+      const letter =
+        name + '\\n\\nÀ l’attention de : ' + recipient +
+        '\\n\\nObjet : ' + subject +
+        '\\n\\n' + greeting +
+        '\\n\\nJe me permets de vous écrire concernant la situation suivante :\\n\\n' +
+        details +
+        '\\n\\nJe reste à votre disposition pour tout renseignement complémentaire.\\n\\n' +
+        ending + '\\n\\n' + name;
+
+      document.getElementById('letter').textContent = letter;
+      document.getElementById('result').style.display = 'block';
+    }
+
+    async function copyLetter() {
+      const text = document.getElementById('letter').textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Lettre copiée !');
+      } catch (e) {
+        alert('Sélectionnez le texte de la lettre et copiez-le manuellement.');
+      }
+    }
+  </script>
+</body>
+</html>
+
