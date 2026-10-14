@@ -1,162 +1,204 @@
-
+ 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easy Lettre</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6fb;
-      color: #20263a;
-    }
-    header {
-      background: #243b80;
-      color: white;
-      padding: 24px 16px;
-      text-align: center;
-    }
-    header h1 { margin: 0 0 8px; }
-    main {
-      max-width: 650px;
-      margin: 24px auto;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px #17255412;
-    }
-    label {
-      display: block;
-      margin: 16px 0 7px;
-      font-weight: bold;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccd2e0;
-      border-radius: 8px;
-      font: inherit;
-      background: white;
-    }
-    textarea { min-height: 100px; resize: vertical; }
-    button {
-      border: 0;
-      border-radius: 8px;
-      padding: 13px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 16px;
-    }
-    .primary { background: #243b80; color: white; width: 100%; }
-    .secondary { background: #e8edff; color: #243b80; }
-    #result {
-      display: none;
-      margin-top: 22px;
-      padding: 16px;
-      background: #f9fafc;
-      border: 1px solid #dce2ef;
-      border-radius: 10px;
-    }
-    #letter { white-space: pre-wrap; line-height: 1.6; }
-    footer { text-align: center; padding: 20px; color: #667085; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#172554">
+<meta name="description" content="Créez facilement vos lettres administratives en français avec Easy Lettre.">
+<title>Easy Lettre — Vos courriers simplifiés</title>
+<style>
+:root{--blue:#2345a0;--navy:#172554;--bg:#f5f7fc;--muted:#64748b;--line:#e2e8f0}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#172033;line-height:1.55}
+header{background:linear-gradient(135deg,#172554,#3159bd);color:white;padding:25px 18px 35px}
+nav,.hero,main,footer{max-width:950px;margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:23px;font-weight:800;letter-spacing:-.5px}
+.logo span{color:#a5f3fc}
+.tag{font-size:12px;background:#ffffff20;padding:7px 10px;border-radius:20px}
+.hero{padding-top:36px}
+.hero h1{font-size:clamp(28px,6vw,43px);line-height:1.12;margin:0 0 13px}
+.hero p{color:#e0e7ff;max-width:580px;margin:0}
+main{padding:24px 15px 45px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 5px 24px #17255408}
+h2{font-size:21px;margin:0 0 6px}
+.intro{color:var(--muted);font-size:14px;margin:0 0 20px}
+label{display:block;font-size:14px;font-weight:700;margin:15px 0 7px}
+input,select,textarea{width:100%;font:inherit;font-size:15px;padding:12px 13px;border:1px solid #cbd5e1;border-radius:10px;background:white;color:#172033}
+input:focus,select:focus,textarea:focus{outline:2px solid #bfdbfe;border-color:var(--blue)}
+textarea{min-height:110px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:10px;padding:12px 16px}
+.primary{background:var(--blue);color:white;width:100%;margin-top:20px}
+.primary:hover{background:#1d367d}
+.secondary{background:#e8edff;color:#203e91}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.actions button{flex:1;min-width:130px}
+#result{display:none}
+.paper{border:1px solid var(--line);border-radius:10px;padding:20px;background:#fff;white-space:pre-wrap;overflow-wrap:anywhere;font-family:Arial,sans-serif;line-height:1.8;min-height:200px}
+.notice{font-size:12px;color:var(--muted);margin-top:14px}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:17px}.hero{padding-top:27px}.tag{font-size:10px}}
+@media print{body{background:white}.no-print,header,footer,#form-card,.notice{display:none!important}main{padding:0;max-width:none}.card{border:0;box-shadow:none;padding:0}#result{display:block!important}.paper{border:0;padding:0}}
+</style>
 </head>
 <body>
-  <header>
-    <h1>✉️ Easy Lettre</h1>
-    <p>Vos lettres administratives, simplement.</p>
-  </header>
+<header>
+<nav>
+<div class="logo">✉ Easy<span>Lettre</span></div>
+<div class="tag">Simple · Rapide · Pratique</div>
+</nav>
+<div class="hero">
+<h1>Vos lettres administratives,<br>en toute simplicité.</h1>
+<p>Préparez un courrier clair en quelques minutes. Remplissez les champs, générez votre lettre et copiez-la ou imprimez-la.</p>
+</div>
+</header>
 
-  <main>
-    <section class="card">
-      <h2>Créer ma lettre</h2>
-      <p>Remplissez les informations pour préparer votre courrier.</p>
+<main>
+<section class="card" id="form-card">
+<h2>Créer une lettre</h2>
+<p class="intro">Choisissez un modèle et décrivez votre situation.</p>
 
-      <label for="type">Type de lettre</label>
-      <select id="type">
-        <option value="administration">Demande administrative</option>
-        <option value="logement">Logement</option>
-        <option value="travail">Travail / emploi</option>
-        <option value="resiliation">Résiliation d'un contrat</option>
-        <option value="reclamation">Réclamation</option>
-        <option value="absence">Justification d'absence</option>
-      </select>
+<label for="type">Quel type de lettre souhaitez-vous ?</label>
+<select id="type">
+<option value="general">Demande administrative</option>
+<option value="caf">Lettre à la CAF</option>
+<option value="cpam">Lettre à la CPAM</option>
+<option value="logement">Logement / propriétaire</option>
+<option value="travail">Travail / employeur</option>
+<option value="reclamation">Réclamation</option>
+<option value="resiliation">Résiliation d'un contrat</option>
+<option value="absence">Justification d'absence</option>
+</select>
 
-      <label for="name">Votre nom</label>
-      <input id="name" placeholder="Prénom et nom">
+<div class="grid">
+<div>
+<label for="name">Votre nom complet</label>
+<input id="name" placeholder="Prénom et nom" autocomplete="name">
+</div>
+<div>
+<label for="city">Votre ville</label>
+<input id="city" placeholder="Ex. : Saint-Étienne">
+</div>
+</div>
 
-      <label for="recipient">Destinataire</label>
-      <input id="recipient" placeholder="Ex. : CAF, propriétaire, employeur">
+<label for="recipient">Destinataire</label>
+<input id="recipient" placeholder="Ex. : CAF de la Loire">
 
-      <label for="subject">Objet de la lettre</label>
-      <input id="subject" placeholder="Expliquez brièvement votre demande">
+<label for="subject">Objet de la lettre</label>
+<input id="subject" placeholder="Ex. : Demande de renseignements">
 
-      <label for="details">Détails de votre demande</label>
-      <textarea id="details" placeholder="Expliquez votre situation en quelques phrases..."></textarea>
+<label for="details">Expliquez votre situation</label>
+<textarea id="details" placeholder="Expliquez votre demande avec vos propres mots..."></textarea>
 
-      <button class="primary" onclick="createLetter()">Préparer ma lettre</button>
+<label for="tone">Style de rédaction</label>
+<select id="tone">
+<option value="polite">Poli et professionnel</option>
+<option value="simple">Simple et direct</option>
+<option value="formal">Très formel</option>
+</select>
 
-      <div id="result">
-        <h3>Votre lettre</h3>
-        <div id="letter"></div>
-        <button class="secondary" onclick="copyLetter()">Copier la lettre</button>
-        <button class="secondary" onclick="window.print()">Imprimer / PDF</button>
-      </div>
-    </section>
-  </main>
+<button class="primary" onclick="createLetter()">✍️ Préparer ma lettre</button>
+<p class="notice">Vos informations restent dans cette page. Cette version ne transmet pas vos données à un serveur.</p>
+</section>
 
-  <footer>Easy Lettre — Simple, pratique et accessible.</footer>
+<section class="card" id="result">
+<h2>Votre lettre est prête</h2>
+<p class="intro">Relisez le courrier et vérifiez les informations avant de l'envoyer.</p>
+<div id="paper" class="paper"></div>
+<div class="actions no-print">
+<button class="secondary" onclick="copyLetter()">Copier le texte</button>
+<button class="secondary" onclick="printLetter()">Imprimer / PDF</button>
+<button class="secondary" onclick="editLetter()">Modifier</button>
+</div>
+<p class="notice">Pensez à ajouter les justificatifs nécessaires et à vérifier les références de votre dossier, le cas échéant.</p>
+</section>
 
-  <script>
-    function createLetter() {
-      const name = document.getElementById('name').value.trim();
-      const recipient = document.getElementById('recipient').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const details = document.getElementById('details').value.trim();
-      const type = document.getElementById('type').value;
+<section class="card">
+<h2>Comment ça marche ?</h2>
+<p>① Choisissez le type de courrier.</p>
+<p>② Décrivez votre demande et remplissez vos informations.</p>
+<p>③ Générez votre lettre, puis copiez-la ou imprimez-la en PDF.</p>
+</section>
+</main>
 
-      if (!name || !recipient || !subject || !details) {
-        alert('Veuillez remplir tous les champs.');
-        return;
-      }
+<footer>© <span id="year"></span> Easy Lettre · Un outil pratique pour vos courriers.</footer>
 
-      let greeting = 'Madame, Monsieur,';
-      let ending = 'Je vous remercie par avance de l’attention portée à ma demande.\\n\\nCordialement,';
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-      if (type === 'travail') {
-        greeting = 'Madame, Monsieur,';
-      }
+const templates = {
+general: "Madame, Monsieur,",
+caf: "Madame, Monsieur,\\n\\nJe me permets de vous contacter au sujet de mon dossier auprès de la Caisse d’allocations familiales.",
+cpam: "Madame, Monsieur,\\n\\nJe me permets de vous contacter au sujet de mon dossier auprès de l’Assurance Maladie.",
+logement: "Madame, Monsieur,\\n\\nJe vous contacte concernant mon logement et souhaite vous faire part de la situation suivante.",
+travail: "Madame, Monsieur,\\n\\nJe me permets de vous écrire au sujet de ma situation professionnelle.",
+reclamation: "Madame, Monsieur,\\n\\nJe souhaite vous adresser une réclamation concernant la situation décrite ci-dessous.",
+resiliation: "Madame, Monsieur,\\n\\nPar la présente, je souhaite vous faire part de ma demande de résiliation du contrat mentionné dans mon courrier.",
+absence: "Madame, Monsieur,\\n\\nJe vous écris afin de vous informer de mon absence et de vous en préciser les raisons."
+};
 
-      const letter =
-        name + '\\n\\nÀ l’attention de : ' + recipient +
-        '\\n\\nObjet : ' + subject +
-        '\\n\\n' + greeting +
-        '\\n\\nJe me permets de vous écrire concernant la situation suivante :\\n\\n' +
-        details +
-        '\\n\\nJe reste à votre disposition pour tout renseignement complémentaire.\\n\\n' +
-        ending + '\\n\\n' + name;
+function createLetter(){
+ const name=document.getElementById("name").value.trim();
+ const city=document.getElementById("city").value.trim();
+ const recipient=document.getElementById("recipient").value.trim();
+ const subject=document.getElementById("subject").value.trim();
+ const details=document.getElementById("details").value.trim();
+ const type=document.getElementById("type").value;
+ const tone=document.getElementById("tone").value;
 
-      document.getElementById('letter').textContent = letter;
-      document.getElementById('result').style.display = 'block';
-    }
+ if(!name||!recipient||!subject||!details){
+   alert("Veuillez remplir votre nom, le destinataire, l’objet et les détails de votre demande.");
+   return;
+ }
 
-    async function copyLetter() {
-      const text = document.getElementById('letter').textContent;
-      try {
-        await navigator.clipboard.writeText(text);
-        alert('Lettre copiée !');
-      } catch (e) {
-        alert('Sélectionnez le texte de la lettre et copiez-le manuellement.');
-      }
-    }
-  </script>
+ let opening=templates[type]||templates.general;
+ let closing="Je vous remercie par avance de l’attention portée à ma demande.\\n\\nJe reste à votre disposition pour tout renseignement complémentaire.";
+ if(tone==="simple"){
+   closing="Merci par avance pour votre réponse.\\n\\nCordialement,";
+ }else if(tone==="formal"){
+   closing="Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.";
+ }else{
+   closing+="\\n\\nCordialement,";
+ }
+
+ const letter=(city ? city+", le "+new Date().toLocaleDateString("fr-FR")+"\\n\\n" : "")+
+ name+"\\n\\nÀ l’attention de "+recipient+
+ "\\n\\nObjet : "+subject+
+ "\\n\\n"+opening+
+ "\\n\\n"+details+
+ "\\n\\n"+closing+"\\n\\n"+name;
+
+ document.getElementById("paper").textContent=letter;
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+async function copyLetter(){
+ const text=document.getElementById("paper").textContent;
+ try{
+   await navigator.clipboard.writeText(text);
+   alert("Votre lettre a été copiée !");
+ }catch(e){
+   const range=document.createRange();
+   range.selectNodeContents(document.getElementById("paper"));
+   const selection=window.getSelection();
+   selection.removeAllRanges();
+   selection.addRange(range);
+   alert("Le texte est sélectionné. Maintenez-le appuyé puis choisissez Copier.");
+ }
+}
+
+function printLetter(){
+ window.print();
+}
+
+function editLetter(){
+ document.getElementById("form-card").scrollIntoView({behavior:"smooth",block:"start"});
+}
+</script>
 </body>
 </html>
+
 
