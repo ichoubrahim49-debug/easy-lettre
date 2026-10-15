@@ -1,204 +1,203 @@
- 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#172554">
-<meta name="description" content="Créez facilement vos lettres administratives en français avec Easy Lettre.">
-<title>Easy Lettre — Vos courriers simplifiés</title>
-<style>
-:root{--blue:#2345a0;--navy:#172554;--bg:#f5f7fc;--muted:#64748b;--line:#e2e8f0}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#172033;line-height:1.55}
-header{background:linear-gradient(135deg,#172554,#3159bd);color:white;padding:25px 18px 35px}
-nav,.hero,main,footer{max-width:950px;margin:auto}
-nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:23px;font-weight:800;letter-spacing:-.5px}
-.logo span{color:#a5f3fc}
-.tag{font-size:12px;background:#ffffff20;padding:7px 10px;border-radius:20px}
-.hero{padding-top:36px}
-.hero h1{font-size:clamp(28px,6vw,43px);line-height:1.12;margin:0 0 13px}
-.hero p{color:#e0e7ff;max-width:580px;margin:0}
-main{padding:24px 15px 45px}
-.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 5px 24px #17255408}
-h2{font-size:21px;margin:0 0 6px}
-.intro{color:var(--muted);font-size:14px;margin:0 0 20px}
-label{display:block;font-size:14px;font-weight:700;margin:15px 0 7px}
-input,select,textarea{width:100%;font:inherit;font-size:15px;padding:12px 13px;border:1px solid #cbd5e1;border-radius:10px;background:white;color:#172033}
-input:focus,select:focus,textarea:focus{outline:2px solid #bfdbfe;border-color:var(--blue)}
-textarea{min-height:110px;resize:vertical}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:10px;padding:12px 16px}
-.primary{background:var(--blue);color:white;width:100%;margin-top:20px}
-.primary:hover{background:#1d367d}
-.secondary{background:#e8edff;color:#203e91}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
-.actions button{flex:1;min-width:130px}
-#result{display:none}
-.paper{border:1px solid var(--line);border-radius:10px;padding:20px;background:#fff;white-space:pre-wrap;overflow-wrap:anywhere;font-family:Arial,sans-serif;line-height:1.8;min-height:200px}
-.notice{font-size:12px;color:var(--muted);margin-top:14px}
-footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:17px}.hero{padding-top:27px}.tag{font-size:10px}}
-@media print{body{background:white}.no-print,header,footer,#form-card,.notice{display:none!important}main{padding:0;max-width:none}.card{border:0;box-shadow:none;padding:0}#result{display:block!important}.paper{border:0;padding:0}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173c68">
+  <meta name="description" content="Easy Lettre : préparez facilement vos courriers administratifs en français.">
+  <title>Easy Lettre - Courriers administratifs</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      color: #243247;
+      line-height: 1.6;
+    }
+    header {
+      background: #173c68;
+      color: white;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .logo { font-size: 30px; font-weight: bold; }
+    header p { margin: 6px 0 0; color: #dbeafe; }
+    main {
+      width: min(760px, 92%);
+      margin: 28px auto;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 22px #16375c12;
+    }
+    h2 { margin-top: 0; color: #173c68; }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd5e1;
+      border-radius: 8px;
+      background: white;
+      font: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #8dbbff;
+      border-color: #2563eb;
+    }
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .primary { background: #1763c6; color: white; width: 100%; }
+    .secondary { background: #e7effb; color: #173c68; margin-right: 8px; }
+    button:hover { opacity: .88; }
+    #result { min-height: 230px; resize: vertical; }
+    .hint { color: #68778b; font-size: 13px; }
+    footer { text-align: center; padding: 22px; color: #68778b; }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-<header>
-<nav>
-<div class="logo">✉ Easy<span>Lettre</span></div>
-<div class="tag">Simple · Rapide · Pratique</div>
-</nav>
-<div class="hero">
-<h1>Vos lettres administratives,<br>en toute simplicité.</h1>
-<p>Préparez un courrier clair en quelques minutes. Remplissez les champs, générez votre lettre et copiez-la ou imprimez-la.</p>
-</div>
-</header>
+  <header>
+    <div class="logo">✉️ Easy Lettre</div>
+    <p>Vos lettres administratives, en toute simplicité.</p>
+  </header>
 
-<main>
-<section class="card" id="form-card">
-<h2>Créer une lettre</h2>
-<p class="intro">Choisissez un modèle et décrivez votre situation.</p>
+  <main>
+    <section class="card">
+      <h2>Créer une lettre</h2>
+      <p>Remplissez les champs pour préparer votre courrier en français.</p>
 
-<label for="type">Quel type de lettre souhaitez-vous ?</label>
-<select id="type">
-<option value="general">Demande administrative</option>
-<option value="caf">Lettre à la CAF</option>
-<option value="cpam">Lettre à la CPAM</option>
-<option value="logement">Logement / propriétaire</option>
-<option value="travail">Travail / employeur</option>
-<option value="reclamation">Réclamation</option>
-<option value="resiliation">Résiliation d'un contrat</option>
-<option value="absence">Justification d'absence</option>
-</select>
+      <label for="type">Type de lettre</label>
+      <select id="type">
+        <option value="general">Lettre administrative générale</option>
+        <option value="logement">Demande de logement</option>
+        <option value="emploi">Candidature à un emploi</option>
+        <option value="resiliation">Résiliation d'un contrat</option>
+        <option value="reclamation">Réclamation</option>
+        <option value="document">Demande de document administratif</option>
+        <option value="caf">Courrier à la CAF</option>
+        <option value="cpam">Courrier à la CPAM</option>
+        <option value="prefecture">Courrier à la préfecture</option>
+      </select>
 
-<div class="grid">
-<div>
-<label for="name">Votre nom complet</label>
-<input id="name" placeholder="Prénom et nom" autocomplete="name">
-</div>
-<div>
-<label for="city">Votre ville</label>
-<input id="city" placeholder="Ex. : Saint-Étienne">
-</div>
-</div>
+      <label for="name">Votre nom et prénom</label>
+      <input id="name" placeholder="Ex. : Brahim Ichou">
 
-<label for="recipient">Destinataire</label>
-<input id="recipient" placeholder="Ex. : CAF de la Loire">
+      <label for="address">Votre adresse</label>
+      <input id="address" placeholder="Adresse complète">
 
-<label for="subject">Objet de la lettre</label>
-<input id="subject" placeholder="Ex. : Demande de renseignements">
+      <label for="recipient">Destinataire</label>
+      <input id="recipient" placeholder="Ex. : Madame, Monsieur">
 
-<label for="details">Expliquez votre situation</label>
-<textarea id="details" placeholder="Expliquez votre demande avec vos propres mots..."></textarea>
+      <label for="subject">Objet de la lettre</label>
+      <input id="subject" placeholder="Ex. : Demande de renseignements">
 
-<label for="tone">Style de rédaction</label>
-<select id="tone">
-<option value="polite">Poli et professionnel</option>
-<option value="simple">Simple et direct</option>
-<option value="formal">Très formel</option>
-</select>
+      <label for="details">Expliquez votre demande</label>
+      <textarea id="details" rows="5"
+        placeholder="Expliquez votre situation et ce que vous souhaitez obtenir..."></textarea>
 
-<button class="primary" onclick="createLetter()">✍️ Préparer ma lettre</button>
-<p class="notice">Vos informations restent dans cette page. Cette version ne transmet pas vos données à un serveur.</p>
-</section>
+      <button class="primary" onclick="generateLetter()">
+        Générer ma lettre
+      </button>
+      <p class="hint">Service gratuit : aucun compte ni paiement nécessaire.</p>
+    </section>
 
-<section class="card" id="result">
-<h2>Votre lettre est prête</h2>
-<p class="intro">Relisez le courrier et vérifiez les informations avant de l'envoyer.</p>
-<div id="paper" class="paper"></div>
-<div class="actions no-print">
-<button class="secondary" onclick="copyLetter()">Copier le texte</button>
-<button class="secondary" onclick="printLetter()">Imprimer / PDF</button>
-<button class="secondary" onclick="editLetter()">Modifier</button>
-</div>
-<p class="notice">Pensez à ajouter les justificatifs nécessaires et à vérifier les références de votre dossier, le cas échéant.</p>
-</section>
+    <section class="card hidden" id="output">
+      <h2>Votre lettre est prête</h2>
+      <p class="hint">Relisez et vérifiez les informations avant l'envoi.</p>
+      <textarea id="result" rows="14" aria-label="Votre lettre générée"></textarea>
+      <button class="secondary" onclick="copyLetter()">Copier ma lettre</button>
+      <button class="secondary" onclick="window.print()">Imprimer</button>
+      <p id="message" role="status"></p>
+    </section>
+  </main>
 
-<section class="card">
-<h2>Comment ça marche ?</h2>
-<p>① Choisissez le type de courrier.</p>
-<p>② Décrivez votre demande et remplissez vos informations.</p>
-<p>③ Générez votre lettre, puis copiez-la ou imprimez-la en PDF.</p>
-</section>
-</main>
+  <footer>
+    © 2026 Easy Lettre · Simple, pratique et gratuit.
+  </footer>
 
-<footer>© <span id="year"></span> Easy Lettre · Un outil pratique pour vos courriers.</footer>
+  <script>
+    function generateLetter() {
+      const type = document.getElementById("type").value;
+      const name = document.getElementById("name").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const recipient = document.getElementById("recipient").value.trim()
+        || "Madame, Monsieur";
+      const subject = document.getElementById("subject").value.trim()
+        || "Demande de renseignements";
+      const details = document.getElementById("details").value.trim();
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+      if (!name || !details) {
+        alert("Veuillez remplir votre nom et expliquer votre demande.");
+        return;
+      }
 
-const templates = {
-general: "Madame, Monsieur,",
-caf: "Madame, Monsieur,\\n\\nJe me permets de vous contacter au sujet de mon dossier auprès de la Caisse d’allocations familiales.",
-cpam: "Madame, Monsieur,\\n\\nJe me permets de vous contacter au sujet de mon dossier auprès de l’Assurance Maladie.",
-logement: "Madame, Monsieur,\\n\\nJe vous contacte concernant mon logement et souhaite vous faire part de la situation suivante.",
-travail: "Madame, Monsieur,\\n\\nJe me permets de vous écrire au sujet de ma situation professionnelle.",
-reclamation: "Madame, Monsieur,\\n\\nJe souhaite vous adresser une réclamation concernant la situation décrite ci-dessous.",
-resiliation: "Madame, Monsieur,\\n\\nPar la présente, je souhaite vous faire part de ma demande de résiliation du contrat mentionné dans mon courrier.",
-absence: "Madame, Monsieur,\\n\\nJe vous écris afin de vous informer de mon absence et de vous en préciser les raisons."
-};
+      const introductions = {
+        general: "Je me permets de vous contacter concernant ma demande.",
+        logement: "Je me permets de vous adresser ma demande concernant un logement.",
+        emploi: "Je souhaite vous proposer ma candidature pour un emploi au sein de votre établissement.",
+        resiliation: "Par la présente, je souhaite demander la résiliation de mon contrat, selon les conditions applicables.",
+        reclamation: "Je souhaite vous faire part de ma réclamation concernant la situation exposée ci-dessous.",
+        document: "Je me permets de solliciter la délivrance d'un document administratif.",
+        caf: "Je me permets de vous contacter au sujet de mon dossier auprès de la CAF.",
+        cpam: "Je me permets de vous contacter au sujet de mon dossier d'assurance maladie.",
+        prefecture: "Je me permets de vous contacter au sujet de ma situation administrative."
+      };
 
-function createLetter(){
- const name=document.getElementById("name").value.trim();
- const city=document.getElementById("city").value.trim();
- const recipient=document.getElementById("recipient").value.trim();
- const subject=document.getElementById("subject").value.trim();
- const details=document.getElementById("details").value.trim();
- const type=document.getElementById("type").value;
- const tone=document.getElementById("tone").value;
+      const letter =
+`${name}
+${address ? address + "\n" : ""}
+${address ? "\n" : ""}
+À l'attention de ${recipient}
 
- if(!name||!recipient||!subject||!details){
-   alert("Veuillez remplir votre nom, le destinataire, l’objet et les détails de votre demande.");
-   return;
- }
+Objet : ${subject}
 
- let opening=templates[type]||templates.general;
- let closing="Je vous remercie par avance de l’attention portée à ma demande.\\n\\nJe reste à votre disposition pour tout renseignement complémentaire.";
- if(tone==="simple"){
-   closing="Merci par avance pour votre réponse.\\n\\nCordialement,";
- }else if(tone==="formal"){
-   closing="Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.";
- }else{
-   closing+="\\n\\nCordialement,";
- }
+Madame, Monsieur,
 
- const letter=(city ? city+", le "+new Date().toLocaleDateString("fr-FR")+"\\n\\n" : "")+
- name+"\\n\\nÀ l’attention de "+recipient+
- "\\n\\nObjet : "+subject+
- "\\n\\n"+opening+
- "\\n\\n"+details+
- "\\n\\n"+closing+"\\n\\n"+name;
+${introductions[type]}
 
- document.getElementById("paper").textContent=letter;
- document.getElementById("result").style.display="block";
- document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
-}
+${details}
 
-async function copyLetter(){
- const text=document.getElementById("paper").textContent;
- try{
-   await navigator.clipboard.writeText(text);
-   alert("Votre lettre a été copiée !");
- }catch(e){
-   const range=document.createRange();
-   range.selectNodeContents(document.getElementById("paper"));
-   const selection=window.getSelection();
-   selection.removeAllRanges();
-   selection.addRange(range);
-   alert("Le texte est sélectionné. Maintenez-le appuyé puis choisissez Copier.");
- }
-}
+Je vous remercie par avance de l'attention portée à ma demande et reste à votre disposition pour tout renseignement ou document complémentaire.
 
-function printLetter(){
- window.print();
-}
+Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
 
-function editLetter(){
- document.getElementById("form-card").scrollIntoView({behavior:"smooth",block:"start"});
-}
-</script>
+${name}`;
+
+      document.getElementById("result").value = letter;
+      document.getElementById("output").classList.remove("hidden");
+      document.getElementById("message").textContent = "";
+      document.getElementById("output").scrollIntoView({ behavior: "smooth" });
+    }
+
+    async function copyLetter() {
+      const text = document.getElementById("result").value;
+      const message = document.getElementById("message");
+
+      try {
+        await navigator.clipboard.writeText(text);
+        message.textContent = "Lettre copiée avec succès !";
+      } catch (error) {
+        const area = document.getElementById("result");
+        area.select();
+        message.textContent = "Sélectionnez le texte puis choisissez Copier.";
+      }
+    }
+  </script>
 </body>
 </html>
-
-
