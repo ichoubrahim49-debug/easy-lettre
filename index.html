@@ -2,310 +2,239 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#183b32">
-  <meta name="description" content="Préparez facilement vos courriers administratifs en français.">
-  <title>Easy Lettre — Vos démarches simplifiées</title>
-  <style>
-    :root {
-      --green: #183b32;
-      --light: #f4f7f4;
-      --gold: #e9c77b;
-      --text: #202b27;
-      --muted: #69766f;
-      --border: #dce5de;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--light);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-    header {
-      background: var(--green);
-      color: white;
-      padding: 20px 16px 38px;
-    }
-    .nav, .hero, main, footer {
-      max-width: 850px;
-      margin: auto;
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo { font-size: 23px; font-weight: 800; }
-    .logo span { color: var(--gold); }
-    .tag {
-      border: 1px solid #ffffff55;
-      border-radius: 30px;
-      padding: 5px 10px;
-      font-size: 12px;
-    }
-    .hero { padding-top: 28px; }
-    .hero h1 {
-      font-size: clamp(29px, 6vw, 43px);
-      line-height: 1.15;
-      margin: 8px 0 12px;
-    }
-    .hero p { color: #e0e9e3; margin: 0; }
-    main { padding: 22px 14px 40px; }
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 5px 20px #173b3210;
-    }
-    h2 { font-size: 20px; margin: 0 0 5px; }
-    .sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin: 14px 0 6px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd7ce;
-      border-radius: 9px;
-      font: inherit;
-      font-size: 16px;
-      background: white;
-      color: var(--text);
-    }
-    textarea { min-height: 95px; resize: vertical; }
-    input:focus, select:focus, textarea:focus {
-      outline: 2px solid #8fb6a4;
-      border-color: var(--green);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 14px;
-    }
-    button {
-      border: 0;
-      border-radius: 9px;
-      padding: 12px 16px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .primary { background: var(--green); color: white; width: 100%; margin-top: 20px; }
-    .secondary { background: #e8f0ea; color: var(--green); }
-    .actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
-    #result {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      background: #fbfcfb;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      min-height: 150px;
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-    }
-    #status { color: var(--green); font-size: 14px; }
-    .note { font-size: 12px; color: var(--muted); }
-    footer { text-align: center; padding: 0 16px 28px; color: var(--muted); font-size: 13px; }
-    @media (max-width: 520px) {
-      .grid { grid-template-columns: 1fr; }
-      .card { padding: 16px; }
-      .hero { padding-top: 23px; }
-    }
-    @media print {
-      body { background: white; }
-      header, #formCard, footer, .actions, .sub, #status { display: none !important; }
-      main { padding: 0; }
-      .card { border: 0; box-shadow: none; }
-      #result { border: 0; padding: 0; }
-      #resultCard h2 { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#183b32">
+<title>Easy Lettre | Courriers administratifs</title>
+<style>
+:root{--green:#183b32;--gold:#e9c77b;--bg:#f4f7f4;--border:#dce5de}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#202b27;font-family:Arial,sans-serif;line-height:1.6}
+header{background:var(--green);color:white;padding:22px 18px 36px}
+nav,main,footer{max-width:800px;margin:auto}
+nav{font-size:23px;font-weight:bold}
+nav span{color:var(--gold)}
+.hero{max-width:800px;margin:24px auto 0}
+h1{font-size:clamp(29px,6vw,42px);line-height:1.2;margin:0 0 12px}
+.hero p{color:#e0e9e3}
+main{padding:22px 14px 40px}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 5px 20px #173b3210}
+h2{font-size:21px;margin:0 0 5px}
+.small{font-size:14px;color:#69766f;margin:0 0 16px}
+label{display:block;font-weight:bold;font-size:14px;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd7ce;border-radius:9px;background:white;font:inherit;font-size:16px}
+textarea{min-height:105px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{padding:12px 15px;border:0;border-radius:9px;font:inherit;font-weight:bold;cursor:pointer}
+.primary{background:var(--green);color:white;width:100%;margin-top:20px}
+.secondary{background:#e8f0ea;color:var(--green)}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+#result{white-space:pre-wrap;overflow-wrap:anywhere;background:#fbfcfb;border:1px solid var(--border);border-radius:10px;padding:16px;min-height:130px}
+#status{color:var(--green);font-size:14px}
+.note{font-size:12px;color:#69766f}
+footer{text-align:center;padding:0 15px 25px;color:#69766f;font-size:13px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.card{padding:16px}}
+@media print{header,#formCard,footer,.actions,.small,#status{display:none!important}body,main{background:white;padding:0}.card{border:0;box-shadow:none}#result{border:0;padding:0}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="logo">Easy <span>Lettre</span></div>
-      <div class="tag">Simple · Rapide · Gratuit</div>
-    </div>
-    <div class="hero">
-      <h1>Vos lettres administratives, en toute simplicité.</h1>
-      <p>Préparez un courrier clair en quelques minutes. Remplissez les champs, générez votre lettre et copiez-la ou imprimez-la.</p>
-    </div>
-  </header>
+<header>
+<nav>Easy <span>Lettre</span></nav>
+<div class="hero">
+<h1>Vos lettres administratives, en toute simplicité.</h1>
+<p>Choisissez votre démarche, préparez votre courrier et copiez-le ou imprimez-le en quelques minutes.</p>
+</div>
+</header>
 
-  <main>
-    <section class="card" id="formCard">
-      <h2>Préparer ma lettre</h2>
-      <p class="sub">Complétez les informations nécessaires.</p>
+<main>
+<section class="card" id="formCard">
+<h2>Préparer ma lettre</h2>
+<p class="small">Choisissez un modèle puis personnalisez votre demande.</p>
+<form id="letterForm">
+<label for="type">Type de lettre</label>
+<select id="type">
+<option value="caf">CAF — Demande d'information</option>
+<option value="cpam">CPAM — Assurance maladie</option>
+<option value="prefecture">Préfecture — Démarche administrative</option>
+<option value="logement">Logement — Lettre au propriétaire</option>
+<option value="employeur">Employeur — Demande de document</option>
+<option value="reclamation">Réclamation</option>
+<option value="resiliation">Résiliation de contrat</option>
+<option value="libre">Autre lettre</option>
+</select>
 
-      <form id="letterForm">
-        <label for="type">Quel est le sujet de votre lettre ?</label>
-        <select id="type">
-          <option value="administration">Demande à une administration</option>
-          <option value="logement">Logement / propriétaire</option>
-          <option value="emploi">Emploi / employeur</option>
-          <option value="resiliation">Résiliation d'un contrat</option>
-          <option value="reclamation">Réclamation</option>
-          <option value="attestation">Demande d'attestation</option>
-          <option value="libre">Autre demande</option>
-        </select>
+<div class="grid">
+<div>
+<label for="name">Votre nom</label>
+<input id="name" placeholder="Prénom et nom" autocomplete="name" required>
+</div>
+<div>
+<label for="recipient">Destinataire</label>
+<input id="recipient" required>
+</div>
+</div>
 
-        <div class="grid">
-          <div>
-            <label for="name">Votre nom</label>
-            <input id="name" placeholder="Prénom et nom" autocomplete="name" required>
-          </div>
-          <div>
-            <label for="recipient">Destinataire</label>
-            <input id="recipient" placeholder="Ex. : Madame, Monsieur" required>
-          </div>
-        </div>
+<label for="address">Votre adresse (facultatif)</label>
+<input id="address" placeholder="Adresse, code postal, ville">
 
-        <label for="address">Votre adresse (facultatif)</label>
-        <input id="address" placeholder="Adresse, code postal, ville" autocomplete="street-address">
+<label for="subject">Objet de la lettre</label>
+<input id="subject" required>
 
-        <label for="subject">Objet de la lettre</label>
-        <input id="subject" placeholder="Ex. : Demande de document" required>
+<label for="details">Votre situation et votre demande</label>
+<textarea id="details" required placeholder="Expliquez votre situation et ce que vous souhaitez demander..."></textarea>
 
-        <label for="details">Expliquez votre situation</label>
-        <textarea id="details" placeholder="Expliquez ce que vous demandez et les informations utiles..." required></textarea>
+<label for="tone">Style de la lettre</label>
+<select id="tone">
+<option value="polite">Poli et professionnel</option>
+<option value="formal">Très formel</option>
+<option value="simple">Simple et direct</option>
+</select>
 
-        <label for="tone">Ton souhaité</label>
-        <select id="tone">
-          <option value="polite">Poli et professionnel</option>
-          <option value="formal">Très formel</option>
-          <option value="simple">Simple et direct</option>
-        </select>
+<button class="primary" type="submit">Générer ma lettre</button>
+</form>
+<p class="note">Aucune API payante : la lettre est préparée directement dans votre navigateur.</p>
+</section>
 
-        <button class="primary" type="submit">Générer ma lettre</button>
-      </form>
-      <p class="note">Vos informations restent dans votre navigateur : ce formulaire ne les envoie pas à un serveur.</p>
-    </section>
+<section class="card" id="resultCard">
+<h2>Votre lettre</h2>
+<p class="small">Vérifiez les informations avant d'envoyer votre courrier.</p>
+<div id="result" aria-live="polite">Votre lettre apparaîtra ici.</div>
+<div class="actions">
+<button class="secondary" id="copy" type="button">Copier la lettre</button>
+<button class="secondary" id="print" type="button">Imprimer / PDF</button>
+<button class="secondary" id="clear" type="button">Effacer</button>
+</div>
+<p id="status" role="status"></p>
+</section>
+</main>
 
-    <section class="card" id="resultCard">
-      <h2>Votre lettre</h2>
-      <p class="sub">Relisez et vérifiez votre courrier avant de l'envoyer.</p>
-      <div id="result" aria-live="polite">Votre lettre apparaîtra ici après avoir rempli le formulaire.</div>
-      <div class="actions">
-        <button class="secondary" id="copy" type="button">Copier la lettre</button>
-        <button class="secondary" id="print" type="button">Imprimer / PDF</button>
-        <button class="secondary" id="clear" type="button">Effacer</button>
-      </div>
-      <p id="status" role="status"></p>
-    </section>
-  </main>
+<footer>
+Easy Lettre · Un outil gratuit d'aide à la rédaction.<br>
+Les modèles sont à adapter à votre situation personnelle.
+</footer>
 
-  <footer>
-    Easy Lettre · Un outil d'aide à la rédaction.<br>
-    Vérifiez les informations et les exigences de votre destinataire avant l'envoi.
-  </footer>
+<script>
+const form=document.getElementById("letterForm");
+const type=document.getElementById("type");
+const recipient=document.getElementById("recipient");
+const subject=document.getElementById("subject");
+const details=document.getElementById("details");
+const result=document.getElementById("result");
+const status=document.getElementById("status");
 
-  <script>
-    const form = document.getElementById("letterForm");
-    const result = document.getElementById("result");
-    const status = document.getElementById("status");
+const templates={
+caf:{
+recipient:"La Caisse d'allocations familiales",
+subject:"Demande d'information concernant mon dossier CAF",
+details:"Je souhaite obtenir des informations concernant mon dossier et connaître les démarches à effectuer. Pourriez-vous m'indiquer les documents nécessaires et la marche à suivre, s'il vous plaît ?",
+opening:"Je me permets de vous contacter au sujet de mon dossier auprès de votre organisme."
+},
+cpam:{
+recipient:"La CPAM — Assurance Maladie",
+subject:"Demande d'information concernant mon dossier d'assurance maladie",
+details:"Je souhaite connaître l'état d'avancement de mon dossier et savoir si des documents complémentaires sont nécessaires. Je vous remercie de bien vouloir m'indiquer les démarches à suivre.",
+opening:"Je me permets de vous contacter concernant mon dossier d'assurance maladie."
+},
+prefecture:{
+recipient:"Madame, Monsieur, Préfecture",
+subject:"Demande d'information concernant ma démarche administrative",
+details:"Je souhaiterais obtenir des informations concernant ma démarche administrative et connaître les documents nécessaires ainsi que les prochaines étapes à effectuer.",
+opening:"Je me permets de vous contacter au sujet de ma démarche administrative."
+},
+logement:{
+recipient:"Madame, Monsieur, propriétaire",
+subject:"Demande concernant mon logement",
+details:"Je vous contacte au sujet de mon logement afin de vous exposer la situation suivante : [précisez votre situation et votre demande]. Je vous remercie de votre retour.",
+opening:"Je me permets de vous écrire au sujet du logement que j'occupe ou que je souhaite louer."
+},
+employeur:{
+recipient:"Madame, Monsieur, service des ressources humaines",
+subject:"Demande de document professionnel",
+details:"Je souhaiterais obtenir le document suivant : [précisez le document souhaité]. Pourriez-vous me l'adresser ou m'indiquer la démarche à suivre ? Je vous remercie pour votre aide.",
+opening:"Je me permets de vous contacter dans le cadre de ma situation professionnelle."
+},
+reclamation:{
+recipient:"Madame, Monsieur, service clientèle",
+subject:"Réclamation concernant un service",
+details:"Je souhaite vous signaler le problème suivant : [décrivez les faits, les dates et votre demande]. Je vous remercie d'étudier ma réclamation et de m'indiquer la solution proposée.",
+opening:"Je souhaite vous adresser une réclamation concernant la situation décrite ci-dessous."
+},
+resiliation:{
+recipient:"Madame, Monsieur, service résiliation",
+subject:"Demande de résiliation de contrat",
+details:"Je souhaite demander la résiliation de mon contrat [référence du contrat, si disponible]. Merci de m'indiquer la date effective de résiliation et les éventuelles démarches restantes.",
+opening:"Je vous adresse la présente demande concernant la résiliation de mon contrat."
+},
+libre:{
+recipient:"Madame, Monsieur",
+subject:"Demande d'information",
+details:"",
+opening:"Je me permets de vous écrire afin de vous présenter ma demande."
+}
+};
 
-    const openings = {
-      administration: "Je me permets de vous contacter au sujet d'une démarche administrative.",
-      logement: "Je me permets de vous écrire concernant mon logement.",
-      emploi: "Je me permets de vous contacter au sujet de ma situation professionnelle.",
-      resiliation: "Je souhaite vous faire part de ma demande de résiliation de contrat.",
-      reclamation: "Je souhaite vous adresser une réclamation concernant la situation décrite ci-dessous.",
-      attestation: "Je me permets de solliciter la délivrance d'une attestation.",
-      libre: "Je me permets de vous écrire afin de vous présenter ma demande."
-    };
+type.addEventListener("change",()=>{
+const t=templates[type.value];
+recipient.value=t.recipient;
+subject.value=t.subject;
+details.value=t.details;
+status.textContent="Modèle sélectionné. Vous pouvez modifier les champs.";
+});
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
+form.addEventListener("submit",event=>{
+event.preventDefault();
+const t=templates[type.value];
+const name=document.getElementById("name").value.trim();
+const address=document.getElementById("address").value.trim();
+const dest=recipient.value.trim();
+const obj=subject.value.trim();
+const body=details.value.trim();
+const tone=document.getElementById("tone").value;
 
-      const name = document.getElementById("name").value.trim();
-      const recipient = document.getElementById("recipient").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const details = document.getElementById("details").value.trim();
-      const type = document.getElementById("type").value;
-      const tone = document.getElementById("tone").value;
+let closing="Je vous remercie par avance de l'attention portée à ma demande.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.";
+if(tone==="formal") closing="Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de ma considération distinguée.";
+if(tone==="simple") closing="Je vous remercie pour votre aide.\n\nCordialement,";
 
-      if (!name || !recipient || !subject || !details) {
-        status.textContent = "Veuillez remplir tous les champs obligatoires.";
-        return;
-      }
+const lines=[name];
+if(address) lines.push(address);
+lines.push("", "À l'attention de "+dest, "", "Objet : "+obj, "", "Madame, Monsieur,", "", t.opening, "", body, "", closing, "", name];
+result.textContent=lines.join("\n");
+status.textContent="Votre lettre est prête. Relisez-la avant l'envoi.";
+document.getElementById("resultCard").scrollIntoView({behavior:"smooth",block:"start"});
+});
 
-      let greeting = "Madame, Monsieur,";
-      let closing = "Je vous remercie par avance de l'attention portée à ma demande.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.";
+document.getElementById("copy").addEventListener("click",async()=>{
+if(result.textContent==="Votre lettre apparaîtra ici."){
+status.textContent="Générez d'abord votre lettre.";return;
+}
+try{
+await navigator.clipboard.writeText(result.textContent);
+status.textContent="Lettre copiée !";
+}catch(e){
+const area=document.createElement("textarea");
+area.value=result.textContent;
+document.body.appendChild(area);
+area.select();
+const ok=document.execCommand("copy");
+area.remove();
+status.textContent=ok?"Lettre copiée !":"Sélectionnez le texte pour le copier.";
+}
+});
 
-      if (tone === "formal") {
-        closing = "Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de ma considération distinguée.";
-      } else if (tone === "simple") {
-        closing = "Je vous remercie pour votre aide et reste disponible si vous avez besoin d'informations complémentaires.\n\nCordialement,";
-      }
+document.getElementById("print").addEventListener("click",()=>{
+if(result.textContent==="Votre lettre apparaîtra ici."){
+status.textContent="Générez d'abord votre lettre.";return;
+}
+window.print();
+});
 
-      const parts = [];
-      parts.push(name);
-      if (address) parts.push(address);
-      parts.push("");
-      parts.push("À l'attention de " + recipient);
-      parts.push("");
-      parts.push("Objet : " + subject);
-      parts.push("");
-      parts.push(greeting);
-      parts.push("");
-      parts.push(openings[type]);
-      parts.push("");
-      parts.push(details);
-      parts.push("");
-      parts.push(closing);
-      parts.push("");
-      parts.push(name);
-
-      result.textContent = parts.join("\n");
-      status.textContent = "Votre lettre est prête. Relisez-la avant de l'envoyer.";
-      document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    document.getElementById("copy").addEventListener("click", async function() {
-      const text = result.textContent;
-      if (!text || text.startsWith("Votre lettre apparaîtra")) {
-        status.textContent = "Générez d'abord votre lettre.";
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        status.textContent = "Lettre copiée !";
-      } catch (error) {
-        const area = document.createElement("textarea");
-        area.value = text;
-        document.body.appendChild(area);
-        area.select();
-        const copied = document.execCommand("copy");
-        area.remove();
-        status.textContent = copied ? "Lettre copiée !" : "Sélectionnez le texte pour le copier.";
-      }
-    });
-
-    document.getElementById("print").addEventListener("click", function() {
-      if (result.textContent.startsWith("Votre lettre apparaîtra")) {
-        status.textContent = "Générez d'abord votre lettre.";
-        return;
-      }
-      window.print();
-    });
-
-    document.getElementById("clear").addEventListener("click", function() {
-      form.reset();
-      result.textContent = "Votre lettre apparaîtra ici après avoir rempli le formulaire.";
-      status.textContent = "Le formulaire a été effacé.";
-    });
-  </script>
+document.getElementById("clear").addEventListener("click",()=>{
+form.reset();
+type.value="caf";
+result.textContent="Votre lettre apparaîtra ici.";
+status.textContent="Formulaire effacé.";
+});
+type.dispatchEvent(new Event("change"));
+</script>
 </body>
 </html>
