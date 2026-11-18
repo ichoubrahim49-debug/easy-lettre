@@ -1,1 +1,589 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123d35">
+<meta name="description" content="Easy Lettre - Assistant administratif français et darija.">
+<title>Easy Lettre | Assistant administratif</title>
+
+<style>
+:root {
+  --green:#123d35;
+  --green2:#205d4d;
+  --gold:#e5c27a;
+  --bg:#f4f7f4;
+  --text:#24312b;
+  --muted:#718078;
+  --border:#e1e9e3;
+}
+* { box-sizing:border-box }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  line-height:1.6;
+}
+button,input,select,textarea { font:inherit }
+button { cursor:pointer }
+header {
+  background:linear-gradient(135deg,#123d35,#286b56);
+  color:white;
+  padding:20px 18px 75px;
+}
+nav {
+  max-width:1050px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo { font-size:25px;font-weight:bold }
+.logo span { color:var(--gold) }
+.lang {
+  background:#ffffff18;
+  color:white;
+  border:1px solid #ffffff55;
+  border-radius:10px;
+  padding:9px 15px;
+}
+.hero {
+  max-width:750px;
+  text-align:center;
+  margin:65px auto 0;
+}
+.tag {
+  color:var(--gold);
+  border:1px solid #ffffff55;
+  padding:6px 13px;
+  border-radius:30px;
+  font-size:13px;
+}
+h1 {
+  font-size:clamp(32px,6vw,52px);
+  line-height:1.2;
+  margin:22px 0 12px;
+}
+.hero p { color:#e0ebe5;font-size:17px }
+main {
+  max-width:1000px;
+  margin:-35px auto 0;
+  padding:0 15px 50px;
+  position:relative;
+}
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+  margin-bottom:22px;
+}
+.feature,.card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 8px 28px #123d3509;
+}
+.feature { padding:16px }
+.feature strong { display:block }
+.feature small { color:var(--muted) }
+.feature span { font-size:24px }
+.card { padding:23px;margin-bottom:20px }
+h2 { font-size:22px;margin:0 0 5px }
+.subtitle { color:var(--muted);font-size:14px;margin:0 0 18px }
+label {
+  display:block;
+  font-size:14px;
+  font-weight:bold;
+  margin:15px 0 6px;
+}
+input,select,textarea {
+  width:100%;
+  padding:13px;
+  border:1px solid #d5e0d8;
+  border-radius:9px;
+  background:white;
+  color:var(--text);
+  font-size:15px;
+}
+textarea { min-height:120px;resize:vertical }
+input:focus,select:focus,textarea:focus {
+  outline:2px solid #205d4d33;
+  border-color:var(--green2);
+}
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+.categories {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin:18px 0;
+}
+.cat {
+  background:#fafcfb;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:12px 5px;
+  color:var(--text);
+}
+.cat span { display:block;font-size:23px }
+.cat small { font-size:12px }
+.cat.active {
+  background:#e9f2ec;
+  border:1px solid var(--green2);
+  color:var(--green);
+}
+.primary {
+  background:var(--green);
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:14px 18px;
+  font-weight:bold;
+}
+.primary:hover { background:var(--green2) }
+.full { width:100%;margin-top:20px }
+.secondary {
+  background:#eaf2ec;
+  color:var(--green);
+  border:0;
+  border-radius:9px;
+  padding:11px 14px;
+  font-weight:bold;
+}
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:14px;
+}
+#result {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#fafcfb;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:19px;
+  min-height:150px;
+}
+.explanation {
+  margin-top:13px;
+  background:#edf4ef;
+  padding:15px;
+  border-radius:10px;
+  font-size:14px;
+}
+.notice,.status {
+  font-size:12px;
+  color:var(--muted);
+}
+.status { color:var(--green2);margin-top:12px }
+footer {
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+  font-size:13px;
+}
+footer p { color:#d5e5dc }
+[dir="rtl"] { text-align:right }
+[hidden] { display:none!important }
+@media(max-width:600px) {
+  .features { grid-template-columns:1fr }
+  .categories { grid-template-columns:repeat(2,1fr) }
+  .grid { grid-template-columns:1fr }
+  .card { padding:17px }
+  .hero { margin-top:45px }
+}
+@media print {
+  header,main>.features,#formCard,footer,.actions,
+  .subtitle,.notice,.status { display:none!important }
+  body,main { background:white;padding:0;margin:0 }
+  #resultCard { border:0;box-shadow:none }
+  #result { border:0;padding:0 }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <div class="logo">Easy <span>Lettre.</span></div>
+  <button class="lang" id="langBtn">🇲🇦 Darija</button>
+</nav>
+
+<div class="hero">
+  <span class="tag"
+    data-fr="Votre assistant administratif"
+    data-ar="المساعد الإداري ديالك">
+    Votre assistant administratif
+  </span>
+
+  <h1
+    data-fr="Vos démarches en France, plus simples."
+    data-ar="الإجراءات الإدارية ديالك ففرنسا ولات أسهل.">
+    Vos démarches en France, plus simples.
+  </h1>
+
+  <p
+    data-fr="Préparez vos courriers administratifs en français et comprenez-les en darija."
+    data-ar="وجد الرسائل الإدارية بالفرنسية وفهمها بالدارجة.">
+    Préparez vos courriers administratifs en français et comprenez-les en darija.
+  </p>
+</div>
+</header>
+
+<main>
+
+<div class="features">
+  <div class="feature">
+    <span>✍️</span>
+    <strong data-fr="Lettres faciles" data-ar="رسائل سهلة">Lettres faciles</strong>
+    <small data-fr="Préparez vos courriers" data-ar="وجد الرسائل ديالك">Préparez vos courriers</small>
+  </div>
+
+  <div class="feature">
+    <span>🌍</span>
+    <strong>Français + Darija</strong>
+    <small data-fr="Comprenez chaque étape" data-ar="فهم كل خطوة">Comprenez chaque étape</small>
+  </div>
+
+  <div class="feature">
+    <span>📄</span>
+    <strong>PDF</strong>
+    <small data-fr="Imprimez vos documents" data-ar="طبع الوثائق ديالك">Imprimez vos documents</small>
+  </div>
+</div>
+
+<section class="card" id="formCard">
+
+<h2 data-fr="Créer une lettre" data-ar="صايب رسالة">Créer une lettre</h2>
+<p class="subtitle"
+ data-fr="Choisissez votre démarche et expliquez votre situation."
+ data-ar="اختار الإجراء وشرح الوضعية ديالك.">
+Choisissez votre démarche et expliquez votre situation.
+</p>
+
+<div class="categories">
+  <button class="cat active" data-type="caf" type="button"><span>🏠</span><small>CAF</small></button>
+  <button class="cat" data-type="cpam" type="button"><span>❤️</span><small>CPAM</small></button>
+  <button class="cat" data-type="prefecture" type="button"><span>🏛️</span><small>Préfecture</small></button>
+  <button class="cat" data-type="logement" type="button"><span>🔑</span><small data-fr="Logement" data-ar="السكن">Logement</small></button>
+  <button class="cat" data-type="employeur" type="button"><span>💼</span><small data-fr="Travail" data-ar="الخدمة">Travail</small></button>
+  <button class="cat" data-type="reclamation" type="button"><span>📢</span><small data-fr="Réclamation" data-ar="شكاية">Réclamation</small></button>
+  <button class="cat" data-type="resiliation" type="button"><span>📝</span><small data-fr="Résiliation" data-ar="إلغاء عقد">Résiliation</small></button>
+  <button class="cat" data-type="libre" type="button"><span>➕</span><small data-fr="Autre" data-ar="آخر">Autre</small></button>
+</div>
+
+<form id="letterForm">
+
+<input type="hidden" id="type" value="caf">
+
+<div class="grid">
+  <div>
+    <label data-fr="Votre nom" data-ar="الاسم الكامل">Votre nom</label>
+    <input id="name" required maxlength="100" placeholder="Prénom et nom">
+  </div>
+  <div>
+    <label data-fr="Destinataire" data-ar="الجهة المرسل إليها">Destinataire</label>
+    <input id="recipient" required maxlength="150">
+  </div>
+</div>
+
+<label data-fr="Votre adresse (facultatif)" data-ar="العنوان ديالك (اختياري)">Votre adresse (facultatif)</label>
+<input id="address" maxlength="180" placeholder="Adresse, code postal, ville">
+
+<label data-fr="Objet de la lettre" data-ar="موضوع الرسالة">Objet de la lettre</label>
+<input id="subject" required maxlength="180">
+
+<label data-fr="Expliquez votre situation" data-ar="شرح الوضعية ديالك">Expliquez votre situation</label>
+<textarea id="details" required maxlength="4000"
+placeholder="Expliquez ce qui s'est passé et ce que vous demandez..."></textarea>
+
+<label data-fr="Style de rédaction" data-ar="أسلوب الكتابة">Style de rédaction</label>
+<select id="tone">
+  <option value="polite">Poli et professionnel</option>
+  <option value="formal">Très formel</option>
+  <option value="simple">Simple et direct</option>
+</select>
+
+<button class="primary full" type="submit"
+ data-fr="✨ Générer ma lettre"
+ data-ar="✨ وجد ليا الرسالة">
+✨ Générer ma lettre
+</button>
+
+</form>
+
+<p class="notice"
+ data-fr="Vos informations ne sont pas envoyées à un serveur par cette version."
+ data-ar="المعلومات ديالك ما كتتصيفط حتى لخادم فهاد النسخة.">
+Vos informations ne sont pas envoyées à un serveur par cette version.
+</p>
+</section>
+
+<section class="card" id="resultCard">
+<h2 data-fr="Votre lettre" data-ar="الرسالة ديالك">Votre lettre</h2>
+
+<p class="subtitle"
+ data-fr="Vérifiez votre courrier avant de l'envoyer."
+ data-ar="راجع الرسالة قبل ما تصيفطها.">
+Vérifiez votre courrier avant de l'envoyer.
+</p>
+
+<div id="result" aria-live="polite">Votre lettre apparaîtra ici.</div>
+<div class="explanation" id="explanation" hidden></div>
+
+<div class="actions">
+  <button class="secondary" id="copy" type="button" data-fr="📋 Copier" data-ar="📋 نسخ">📋 Copier</button>
+  <button class="secondary" id="print" type="button" data-fr="📄 Imprimer / PDF" data-ar="📄 طبع / PDF">📄 Imprimer / PDF</button>
+  <button class="secondary" id="clear" type="button" data-fr="Effacer" data-ar="مسح">Effacer</button>
+</div>
+
+<p class="status" id="status" role="status"></p>
+</section>
+
+<section class="card">
+<h2 data-fr="Besoin d'aide ?" data-ar="محتاج المساعدة؟">Besoin d'aide ?</h2>
+<p data-fr="Easy Lettre vous aide à comprendre les démarches administratives en France."
+ data-ar="Easy Lettre كيساعدك تفهم الإجراءات الإدارية ففرنسا.">
+Easy Lettre vous aide à comprendre les démarches administratives en France.
+</p>
+<p class="notice"
+ data-fr="Les modèles sont des exemples. Vérifiez toujours les informations et les règles applicables à votre situation."
+ data-ar="النماذج غير أمثلة. تأكد دائماً من المعلومات والقواعد اللي كتنطبق على وضعيتك.">
+Les modèles sont des exemples. Vérifiez toujours les informations et les règles applicables à votre situation.
+</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="logo">Easy <span>Lettre.</span></div>
+  <p>© 2026 Easy Lettre</p>
+  <p data-fr="Un outil d'aide à la rédaction administrative."
+     data-ar="أداة للمساعدة في كتابة الرسائل الإدارية.">
+    Un outil d'aide à la rédaction administrative.
+  </p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+let language = "fr";
+let currentType = "caf";
+let generated = false;
+
+const templates = {
+caf:{
+recipient:"La Caisse d'allocations familiales",
+subject:"Demande d'information concernant mon dossier CAF",
+opening:"Je me permets de vous contacter au sujet de mon dossier auprès de votre organisme.",
+explanation:"هاد الرسالة كتستعمل باش تطلب معلومات على ملف CAF أو تعرف الوثائق والإجراءات المطلوبة."
+},
+cpam:{
+recipient:"La CPAM – Assurance Maladie",
+subject:"Demande d'information concernant mon dossier d'assurance maladie",
+opening:"Je me permets de vous contacter concernant mon dossier d'assurance maladie.",
+explanation:"هاد الرسالة كتعاونك تسول CPAM على الملف ديالك أو الوثائق الناقصة."
+},
+prefecture:{
+recipient:"Madame, Monsieur, Préfecture",
+subject:"Demande d'information concernant ma démarche administrative",
+opening:"Je me permets de vous contacter au sujet de ma démarche administrative.",
+explanation:"هاد الرسالة كتستعمل لطلب معلومات من المحافظة على إجراء إداري."
+},
+logement:{
+recipient:"Madame, Monsieur, propriétaire",
+subject:"Demande concernant mon logement",
+opening:"Je me permets de vous écrire au sujet de mon logement.",
+explanation:"هاد الرسالة موجهة للمالك بخصوص السكن أو الإصلاحات أو طلب معلومات."
+},
+employeur:{
+recipient:"Madame, Monsieur, service des ressources humaines",
+subject:"Demande de document professionnel",
+opening:"Je me permets de vous contacter dans le cadre de ma situation professionnelle.",
+explanation:"هاد الرسالة كتعاونك تطلب شهادة العمل أو وثيقة مهنية من المشغل."
+},
+reclamation:{
+recipient:"Madame, Monsieur, service clientèle",
+subject:"Réclamation concernant un service",
+opening:"Je souhaite vous adresser une réclamation concernant la situation décrite ci-dessous.",
+explanation:"هاد الرسالة شكاية رسمية. حاول تذكر التواريخ والوقائع والطلب ديالك."
+},
+resiliation:{
+recipient:"Madame, Monsieur, service résiliation",
+subject:"Demande de résiliation de contrat",
+opening:"Je vous adresse la présente demande concernant la résiliation de mon contrat.",
+explanation:"هاد الرسالة لطلب إلغاء عقد. راجع شروط العقد وآجال الإلغاء."
+},
+libre:{
+recipient:"Madame, Monsieur",
+subject:"Demande d'information",
+opening:"Je me permets de vous écrire afin de vous présenter ma demande.",
+explanation:"هاد نموذج عام تقدر تستعملو لأي طلب آخر."
+}
+};
+
+function setStatus(message) {
+  $("status").textContent = message;
+}
+
+function setType(type) {
+  currentType = type;
+  $("type").value = type;
+
+  document.querySelectorAll(".cat").forEach(button => {
+    button.classList.toggle("active",button.dataset.type === type);
+  });
+
+  const t = templates[type];
+  $("recipient").value = t.recipient;
+  $("subject").value = t.subject;
+  $("details").value = "";
+  setStatus(language === "fr"
+    ? "Modèle sélectionné. Expliquez votre situation."
+    : "اختار النموذج وشرح الوضعية ديالك.");
+}
+
+document.querySelectorAll(".cat").forEach(button => {
+  button.addEventListener("click",() => setType(button.dataset.type));
+});
+
+function changeLanguage() {
+  language = language === "fr" ? "ar" : "fr";
+
+  document.documentElement.lang = language === "fr" ? "fr" : "ar";
+  document.documentElement.dir = language === "fr" ? "ltr" : "rtl";
+
+  document.querySelectorAll("[data-fr]").forEach(element => {
+    element.textContent = language === "fr"
+      ? element.dataset.fr
+      : element.dataset.ar;
+  });
+
+  $("langBtn").textContent = language === "fr"
+    ? "🇲🇦 Darija"
+    : "🇫🇷 Français";
+
+  $("tone").options[0].text = language === "fr" ? "Poli et professionnel" : "مهذب ومهني";
+  $("tone").options[1].text = language === "fr" ? "Très formel" : "رسمي جداً";
+  $("tone").options[2].text = language === "fr" ? "Simple et direct" : "بسيط ومباشر";
+
+  if (!generated) {
+    $("result").textContent = language === "fr"
+      ? "Votre lettre apparaîtra ici."
+      : "الرسالة ديالك غادي تظهر هنا.";
+  }
+
+  if (generated) {
+    $("explanation").textContent = templates[currentType].explanation;
+  }
+}
+
+$("langBtn").addEventListener("click",changeLanguage);
+
+$("letterForm").addEventListener("submit",event => {
+  event.preventDefault();
+
+  const name = $("name").value.trim();
+  const address = $("address").value.trim();
+  const recipient = $("recipient").value.trim();
+  const subject = $("subject").value.trim();
+  const details = $("details").value.trim();
+  const tone = $("tone").value;
+  const t = templates[currentType];
+
+  let closing = "Je vous remercie par avance de l'attention portée à ma demande.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.";
+
+  if (tone === "formal") {
+    closing = "Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de ma considération distinguée.";
+  }
+
+  if (tone === "simple") {
+    closing = "Je vous remercie pour votre aide.\n\nCordialement,";
+  }
+
+  const lines = [name];
+
+  if (address) lines.push(address);
+
+  lines.push(
+    "",
+    "À l'attention de " + recipient,
+    "",
+    "Objet : " + subject,
+    "",
+    "Madame, Monsieur,",
+    "",
+    t.opening,
+    "",
+    details,
+    "",
+    closing,
+    "",
+    name
+  );
+
+  $("result").textContent = lines.join("\n");
+  $("explanation").textContent = t.explanation;
+  $("explanation").hidden = false;
+  generated = true;
+
+  setStatus(language === "fr"
+    ? "Votre lettre est prête. Vérifiez-la avant l'envoi."
+    : "الرسالة واجدة. راجعها قبل الإرسال.");
+
+  $("resultCard").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+$("copy").addEventListener("click",async() => {
+  if (!generated) {
+    setStatus(language === "fr" ? "Générez d'abord une lettre." : "خاصك توجد الرسالة الأول.");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText($("result").textContent);
+    setStatus(language === "fr" ? "Lettre copiée !" : "تنسخات الرسالة!");
+  } catch(error) {
+    const area = document.createElement("textarea");
+    area.value = $("result").textContent;
+    document.body.appendChild(area);
+    area.select();
+    const success = document.execCommand("copy");
+    area.remove();
+    setStatus(success ? "Lettre copiée !" : "Copiez le texte manuellement.");
+  }
+});
+
+$("print").addEventListener("click",() => {
+  if (!generated) {
+    setStatus(language === "fr" ? "Générez d'abord une lettre." : "خاصك توجد الرسالة الأول.");
+    return;
+  }
+  window.print();
+});
+
+$("clear").addEventListener("click",() => {
+  $("letterForm").reset();
+  generated = false;
+  $("result").textContent = language === "fr"
+    ? "Votre lettre apparaîtra ici."
+    : "الرسالة ديالك غادي تظهر هنا.";
+  $("explanation").hidden = true;
+  setType("caf");
+  setStatus(language === "fr" ? "Formulaire effacé." : "تم مسح المعلومات.");
+});
+
+setType("caf");
+</script>
+
+</body>
+</html>
+
